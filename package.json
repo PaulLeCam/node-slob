@@ -4,7 +4,7 @@
   "description": "Basic implementation of shared Backbone components between the client and server",
   "main": "index",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --reporter spec",
     "test-watch": "mocha --watch --reporter min"
   },
   "repository": {
@@ -21,6 +21,8 @@
     "coffee-script": "~1.6.2"
   },
   "devDependencies": {
-    "should": "~1.2.2"
+    "should": "~1.2.2",
+    "supertest": "~0.5.1",
+    "express": "~3.1.1"
   }
 }
