@@ -1,10 +1,11 @@
 {
   "name": "slob",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Basic implementation of shared Backbone components between the client and server",
-  "main": "src",
+  "main": "index",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test-watch": "mocha --watch --reporter min"
   },
   "repository": {
     "type": "git",
@@ -14,9 +15,10 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "dependencies": {
-    "backbone": "~0.9.10",
+    "backbone": "~1.0",
     "handlebars": "~1.0.10",
-    "jquery": "~1.8.3"
+    "jquery": "~1.8.3",
+    "coffee-script": "~1.6.2"
   },
   "devDependencies": {
     "should": "~1.2.2"

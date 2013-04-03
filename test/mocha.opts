@@ -1,3 +1,4 @@
 --require should
 --compilers coffee:coffee-script
 --ui bdd
+--timeout 200
