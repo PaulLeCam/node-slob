@@ -1,0 +1,24 @@
+{
+  "name": "slob",
+  "version": "0.0.1",
+  "description": "Basic implementation of shared Backbone components between the client and server",
+  "main": "src",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulLeCam/slob.git"
+  },
+  "author": "Paul Le Cam <paul@ulem.net>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "backbone": "~0.9.10",
+    "handlebars": "~1.0.10",
+    "jquery": "~1.8.3"
+  },
+  "devDependencies": {
+    "should": "~1.2.2"
+  }
+}
