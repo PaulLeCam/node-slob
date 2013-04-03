@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaulLeCam/slob.git"
+    "url": "https://github.com/PaulLeCam/node-slob.git"
   },
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "BSD",
