@@ -21,7 +21,7 @@ module.exports = (path) ->
     res.locals.model = (type, data, name) ->
       createData "models/#{ type }", data, name
 
-    res.locals.view = (type, params) ->
+    res.locals.view = (type, params = {}) ->
       rel_path = "views/#{ type }"
       View = require "#{ path }/#{ rel_path }"
       view = new View params

@@ -1,3 +1,4 @@
+fs = require "fs"
 Backbone = require "backbone"
 Handlebars = require "handlebars"
 $ = require "jquery"
@@ -11,6 +12,9 @@ subviews = {}
 
 template.registerHelper "safe", (html) ->
   new template.SafeString html
+
+template.load = (file) ->
+  template.compile fs.readFileSync(file).toString()
 
 template.addSubView = (view) ->
   subviews[view.cid] = view

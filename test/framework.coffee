@@ -7,11 +7,21 @@ describe "framework", ->
   describe "template", ->
 
     it "should register the `safe` helper", ->
-
       tmpl = template.compile "<div>{{safe content}}</div>"
       content = "<a href='#'>link</a>"
       res = tmpl {content}
       res.should.equal "<div><a href='#'>link</a></div>"
+
+    it "should load and compile HTML content", ->
+      tmpl = template.load "#{ __dirname }/fixtures/templates/item.htm"
+      res = tmpl
+        title: "test"
+        content: "test"
+      res.should.equal """
+      <h3>test</h3>
+      <p>test</p>
+
+      """
 
   describe "model", ->
 
