@@ -135,3 +135,26 @@ describe "middleware", ->
         res.end()
 
       makeRequest app, done
+
+  describe "template", ->
+
+    it "should render template into HTMl content", (done) ->
+
+      app = express()
+        .use middleware "#{ __dirname }/fixtures"
+      
+      app.get "/", (req, res) ->
+        try
+          html = res.locals.template "item.htm",
+            title: "test"
+            content: "test"
+          html.should.equal """
+          <h3>test</h3>
+          <p>test</p>
+
+          """
+        catch e
+          return res.send 500, e
+        res.end()
+
+      makeRequest app, done

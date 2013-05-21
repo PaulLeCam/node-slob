@@ -41,6 +41,8 @@ Backbone.$ = $
 
 class Model extends Backbone.Model
 
+  @Store = ->
+
   emit: ->
     @trigger.apply @, arguments
 

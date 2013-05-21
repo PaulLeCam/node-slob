@@ -1,6 +1,6 @@
 {
   "name": "slob",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Basic implementation of shared Backbone components between the client and server",
   "main": "index",
   "scripts": {

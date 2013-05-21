@@ -1,3 +1,5 @@
+{template} = require "./framework"
+
 module.exports = (path) ->
 
   (req, res, next) ->
@@ -32,5 +34,8 @@ module.exports = (path) ->
         load: rel_path
         data: params
       view.render()
+
+    res.locals.template = (name, data = {}) ->
+      template.load("#{ path }/templates/#{ name }") data
 
     next()
