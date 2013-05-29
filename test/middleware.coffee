@@ -1,4 +1,4 @@
-$ = require "jquery"
+$ = require "../src/jquery"
 express = require "express"
 request = require "supertest"
 middleware = require "../src/middleware"

@@ -1,7 +1,7 @@
 fs = require "fs"
 Backbone = require "backbone"
 Handlebars = require "handlebars"
-$ = require("jquery").create null, "2.0"
+$ = require "./jquery"
 
 #
 # Template

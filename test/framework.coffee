@@ -1,4 +1,4 @@
-$ = require "jquery"
+$ = require "../src/jquery"
 {mvc, template} = require "../src/framework"
 fixtures = require "./fixtures"
 
