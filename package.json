@@ -1,7 +1,7 @@
 {
   "name": "slob",
-  "version": "0.1.0",
-  "description": "Basic implementation of shared Backbone components between the client and server",
+  "version": "0.1.1",
+  "description": "Slob is made of an utility `framework` component, to be used as Backbone Models, Collections and Views and Handlebars templates, and a Connect middleware to render them and send their data to the client as JS objects.",
   "main": "index",
   "scripts": {
     "test": "mocha --reporter spec",
@@ -12,15 +12,15 @@
     "url": "https://github.com/PaulLeCam/node-slob.git"
   },
   "author": "Paul Le Cam <paul@ulem.net>",
-  "license": "BSD",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
     "backbone": "~1.0",
     "handlebars": "~1.0.10",
-    "coffee-script": "~1.6.2",
     "jsdom": "~0.6.5"
   },
   "devDependencies": {
+    "coffee-script": "~1.6.2",
     "should": "~1.2.2",
     "supertest": "~0.5.1",
     "express": "~3.1.1"
