@@ -1,6 +1,6 @@
 {
   "name": "slob",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Basic implementation of shared Backbone components between the client and server",
   "main": "index",
   "scripts": {
@@ -17,7 +17,7 @@
   "dependencies": {
     "backbone": "~1.0",
     "handlebars": "~1.0.10",
-    "jquery": "~1.8.3",
+    "jquery": "git://github.com/coolaj86/node-jquery.git",
     "coffee-script": "~1.6.2"
   },
   "devDependencies": {
