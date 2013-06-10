@@ -69,7 +69,7 @@ class View extends Backbone.View
     @trigger.apply @, arguments
 
   # The `renderer()` set the HTML content for the element and render eventual associated subviews.
-  # It returns the HTML element to be diaplyed by the view.
+  # It returns the HTML element to be displayed by the view.
   renderer: (html) ->
     @$el
       .attr("data-view", @cid)
