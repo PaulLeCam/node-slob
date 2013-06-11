@@ -16,7 +16,7 @@ module.exports = (base_path) ->
       item = new Cls data
       if name? then res.locals.app_data.data.push
         key: name
-        load: client_path
+        load: file_path
         data: item.toJSON()
       item
 

@@ -1,6 +1,6 @@
 {
   "name": "slob",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Slob is made of an utility `framework` component, to be used as Backbone Models, Collections and Views and Handlebars templates, and a Connect middleware to render them and send their data to the client as JS objects.",
   "main": "index",
   "scripts": {

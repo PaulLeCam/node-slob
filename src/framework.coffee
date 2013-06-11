@@ -39,9 +39,6 @@ template.renderSubViews = ($el) ->
 
 class Model extends Backbone.Model
 
-  # Required for compatibility with client-side code
-  @Store = ->
-
   # Alias `trigger()` to `emit()` for consistency with Node's EventEmitter
   emit: ->
     @trigger.apply @, arguments
