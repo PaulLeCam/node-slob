@@ -17,11 +17,16 @@ describe "framework", ->
       res = tmpl
         title: "test"
         content: "test"
-      res.should.equal """
-      <h3>test</h3>
-      <p>test</p>
+      res.should.equal "<h3>test</h3><p>test</p>\n"
 
-      """
+    it "should register the `render` helper", ->
+      tmpl = template.compile "<div>{{render itemTmpl args}}</div>"
+      res = tmpl
+        itemTmpl: "#{ __dirname }/fixtures/templates/item.htm"
+        args:
+          title: "test"
+          content: "test"
+      res.should.equal "<div><h3>test</h3><p>test</p>\n</div>"
 
   describe "model", ->
 

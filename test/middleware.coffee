@@ -50,7 +50,7 @@ describe "middleware", ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-      
+
       app.get "/", (req, res) ->
         try
           m = res.locals.model "item"
@@ -67,7 +67,7 @@ describe "middleware", ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-      
+
       app.get "/", (req, res) ->
         try
           m = res.locals.model "item", {id: 1, title: "test"}, "MyItem"
@@ -99,7 +99,7 @@ describe "middleware", ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-      
+
       app.get "/", (req, res) ->
         try
           m = res.locals.model "item",
@@ -117,7 +117,7 @@ describe "middleware", ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-      
+
       app.get "/", (req, res) ->
         try
           m = res.locals.model "item",
@@ -142,17 +142,13 @@ describe "middleware", ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-      
+
       app.get "/", (req, res) ->
         try
           html = res.locals.template "item.htm",
             title: "test"
             content: "test"
-          html.should.equal """
-          <h3>test</h3>
-          <p>test</p>
-
-          """
+          html.should.equal "<h3>test</h3><p>test</p>\n"
         catch e
           return res.send 500, e
         res.end()

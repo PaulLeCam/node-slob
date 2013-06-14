@@ -9,10 +9,6 @@ Backbone.$ = require "./jquery"
 template = Handlebars
 subviews = {}
 
-# Add a "safe" helper to render raw HTML
-template.registerHelper "safe", (html) ->
-  new template.SafeString html
-
 # Load and compile HTML content
 template.load = (file) ->
   template.compile fs.readFileSync(file).toString()
@@ -34,6 +30,16 @@ template.renderSubViews = ($el) ->
   $el.find("view").each (i, view) ->
     $view = $el.find view
     $view.replaceWith template.renderSubView $view.data "cid"
+
+# Add a "safe" helper to render raw HTML
+template.registerHelper "safe", (html) ->
+  new template.SafeString html
+
+# Load and render another template
+template.registerHelper "render", (file, args...) ->
+  tmpl = template.load file
+  html = tmpl.apply tmpl, args
+  new template.SafeString html
 
 # ## Model
 
