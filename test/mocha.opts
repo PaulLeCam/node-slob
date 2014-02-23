@@ -1,4 +1,4 @@
 --require should
---compilers coffee:coffee-script
+--compilers coffee:coffee-script/register
 --ui bdd
 --timeout 200
