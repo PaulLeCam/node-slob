@@ -1,3 +1,3 @@
-{mvc} = require "../../../src/framework"
+{Model} = require "../../../src/framework"
 
-module.exports = class Item extends mvc.Model
+module.exports = class Item extends Model

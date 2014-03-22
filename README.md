@@ -1,7 +1,7 @@
 Slob
 ====
 
-Slob is made of an utility framework component, to be used as Backbone Models, Collections and Views and Handlebars templates, and a Connect middleware to render them and send their data to the client as JS objects.
+Slob is made of an utility MVC framework made of Backbone Models and Collections, and React components as Views, and a middleware to render them and send their data to the client as JS objects.
 
 Installation
 ------------

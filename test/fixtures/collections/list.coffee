@@ -1,6 +1,6 @@
-{mvc} = require "../../../src/framework"
+{Collection} = require "../../../src/framework"
 Item = require "../models/item"
 
-module.exports = class List extends mvc.Collection
+module.exports = class List extends Collection
 
   model: Item

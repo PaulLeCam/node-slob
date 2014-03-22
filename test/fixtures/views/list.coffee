@@ -1,15 +1,13 @@
-{mvc, template} = require "../../../src/framework"
+{View} = require "../../../src/framework"
 Item = require "./item"
-tmpl = template.compile require("fs").readFileSync("#{ __dirname }/../templates/list.htm").toString()
+{h2, div, ul} = View.DOM
 
-template.registerHelper "item", (model = {}) ->
-  template.addSubView new Item {model}
-
-module.exports = class List extends mvc.View
-
-  template: tmpl
-
+module.exports = View.createClass
   render: ->
-    @renderer @template
-      title: "Hello list"
-      items: @collection.models
+    items = {}
+    @props.collection.models.forEach (model) ->
+      items[ model.cid ] = Item {model}
+
+    div {},
+      h2 {}, @props.title
+      ul {}, items

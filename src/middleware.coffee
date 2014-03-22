@@ -1,4 +1,4 @@
-{template} = require "./framework"
+{View} = require "./framework"
 
 # Set the base path used to load files
 module.exports = (base_path) ->
@@ -29,19 +29,14 @@ module.exports = (base_path) ->
     # Load and instanciate view, and return its content
     res.locals.view = (type, params = {}) ->
       view_path = "views/#{ type }"
-      View = require "#{ base_path }/#{ view_path }"
-      view = new View params
-      params.cid = view.cid
+      Component = require "#{ base_path }/#{ view_path }"
+      view = Component params
       # Transform `model` and `collection` params to be sent to client
       params.model = params.model.toJSON() if params.model
       params.collection = params.collection.toJSON() if params.collection
       res.locals.app_data.views.push
         load: view_path
         data: params
-      view.render()
-
-    # Render template
-    res.locals.template = (name, data = {}) ->
-      template.load("#{ base_path }/templates/#{ name }") data
+      View.renderComponentToStaticMarkup view
 
     next()
