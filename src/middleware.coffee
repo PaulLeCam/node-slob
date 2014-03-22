@@ -37,6 +37,6 @@ module.exports = (base_path) ->
       res.locals.app_data.views.push
         load: view_path
         data: params
-      View.renderComponentToStaticMarkup view
+      View.renderComponentToString view
 
     next()

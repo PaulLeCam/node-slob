@@ -1,5 +1,5 @@
 Backbone = require "backbone"
-React = require "react"
+React = require "react/addons"
 
 Backbone.$ = require "./jquery"
 

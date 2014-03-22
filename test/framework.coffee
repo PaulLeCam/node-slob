@@ -32,7 +32,7 @@ describe "framework", ->
         title: "test"
         content: "hello world"
       v = fixtures.ItemView model: m
-      html = View.renderComponentToStaticMarkup v
+      html = View.renderComponentToString v
       $(html).find("h3").text().should.equal "test"
 
     it "should render a component hierarchy as HTML", ->
@@ -43,7 +43,7 @@ describe "framework", ->
       v = fixtures.ListView
         title: "Hello list"
         collection: c
-      $html = $ View.renderComponentToStaticMarkup v
+      $html = $ View.renderComponentToString v
       $html.find("h2").text().should.equal "Hello list"
       $html.find("h3")[0].innerHTML.should.equal "test1"
       $html.find("h3")[1].innerHTML.should.equal "test2"
