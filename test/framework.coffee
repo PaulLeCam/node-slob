@@ -1,4 +1,4 @@
-$ = require "../src/jquery"
+cheerio = require "cheerio"
 {Model, View, Collection} = require "../src/framework"
 fixtures = require "./fixtures"
 
@@ -33,7 +33,8 @@ describe "framework", ->
         content: "hello world"
       v = fixtures.ItemView model: m
       html = View.renderComponentToString v
-      $(html).find("h3").text().should.equal "test"
+      $ = cheerio.load html
+      $("h3").text().should.equal "test"
 
     it "should render a component hierarchy as HTML", ->
       c = new fixtures.List [
@@ -43,7 +44,7 @@ describe "framework", ->
       v = fixtures.ListView
         title: "Hello list"
         collection: c
-      $html = $ View.renderComponentToString v
-      $html.find("h2").text().should.equal "Hello list"
-      $html.find("h3")[0].innerHTML.should.equal "test1"
-      $html.find("h3")[1].innerHTML.should.equal "test2"
+      $ = cheerio.load View.renderComponentToString v
+      $("h2").text().should.equal "Hello list"
+      $($("h3")[0]).text().should.equal "test1"
+      $($("h3")[1]).text().should.equal "test2"

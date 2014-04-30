@@ -32,11 +32,13 @@ module.exports = (base_path) ->
       Component = require "#{ base_path }/#{ view_path }"
       view = Component params
       # Transform `model` and `collection` params to be sent to client
-      params.model = params.model.toJSON() if params.model
-      params.collection = params.collection.toJSON() if params.collection
+      view_params = {}
+      view_params.model = params.model.toJSON() if params.model
+      view_params.collection = params.collection.toJSON() if params.collection
       res.locals.app_data.views.push
         load: view_path
-        data: params
+        data: view_params
+      # Return as HTML string
       View.renderComponentToString view
 
     next()

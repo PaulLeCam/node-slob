@@ -239,37 +239,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "foldPrefix": "^",
           "name": "CoffeeScript"
         },
-        "sourcePath": "/Users/paul/Dev/PaulLeCam/node-slob/src/jquery.coffee",
-        "projectPath": "src/jquery.coffee",
-        "targetPath": "jquery",
-        "pageTitle": "jquery",
-        "title": "jquery"
-      },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 2,
-            "title": "Expose jQuery server-side for Backbone, as we need to render views",
-            "slug": "expose-jquery-server-side-for-backbone-as-we-need-to-render-views"
-          },
-          "depth": 2
-        }
-      ]
-    }, {
-      "type": "file",
-      "data": {
-        "language": {
-          "nameMatchers": [".coffee", "Cakefile"],
-          "pygmentsLexer": "coffee-script",
-          "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
-          "strictMultiLineEnd": false,
-          "singleLineComment": ["#"],
-          "ignorePrefix": "}",
-          "foldPrefix": "^",
-          "name": "CoffeeScript"
-        },
         "sourcePath": "/Users/paul/Dev/PaulLeCam/node-slob/src/middleware.coffee",
         "projectPath": "src/middleware.coffee",
         "targetPath": "middleware",

@@ -1,8 +1,6 @@
 Backbone = require "backbone"
 React = require "react/addons"
 
-Backbone.$ = require "./jquery"
-
 # ## Model
 
 class Model extends Backbone.Model

@@ -1,11 +1,12 @@
 {
   "name": "slob",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Slob is made of an utility `framework` component, to be used as Backbone Models, Collections and Views and Handlebars templates, and a Connect middleware to render them and send their data to the client as JS objects.",
   "main": "index",
   "scripts": {
     "test": "mocha --reporter spec",
-    "test-watch": "mocha --watch --reporter min"
+    "test-watch": "mocha --watch --reporter min",
+    "doc": "groc"
   },
   "repository": {
     "type": "git",
@@ -15,16 +16,14 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "backbone": "^1.1",
-    "jquery": "^2.1.0",
-    "jsdom": "^0.10.3",
-    "envify": "^1.2.1",
+    "backbone": "^1.1.2",
     "react": "^0.10.0"
   },
   "devDependencies": {
+    "cheerio": "^0.15.0",
     "coffee-script": "^1.7.1",
-    "should": "^3.1.2",
-    "supertest": "^0.10.0",
-    "express": "^3.5.0"
+    "express": "^4.1.1",
+    "should": "^3.3.1",
+    "supertest": "^0.11.0"
   }
 }

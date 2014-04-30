@@ -1,13 +1,8 @@
-$ = require "../src/jquery"
+cheerio = require "cheerio"
 express = require "express"
 request = require "supertest"
 middleware = require "../src/middleware"
 fixtures = require "./fixtures"
-
-makeRequest = (app, done) ->
-  request(app).get("/").end (err, res) ->
-    throw new Error res.body.message if res.body.name is "AssertionError"
-    done()
 
 describe "middleware", ->
 
@@ -17,59 +12,54 @@ describe "middleware", ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-
-      app.get "/", (req, res) ->
-        try
+        .use (req, res) ->
           res.locals.app_data.should.have.property("data").instanceof Array
           res.locals.app_data.should.have.property("views").instanceof Array
-        catch e
-          return res.send 500, e
-        res.end()
+          res.end()
 
-      makeRequest app, done
+      request app
+        .get "/"
+        .expect 200
+        .end done
 
     it "should have registered locals functions `model`, `collection` and `view`", (done) ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
+        .use (req, res) ->
+          res.locals.model.should.be.an.instanceof Function
+          res.locals.collection.should.be.an.instanceof Function
+          res.locals.view.should.be.an.instanceof Function
+          res.end()
 
-      app.get "/", (req, res) ->
-        try
-          res.locals.should.have.property("model").instanceof Function
-          res.locals.should.have.property("collection").instanceof Function
-          res.locals.should.have.property("view").instanceof Function
-        catch e
-          return res.send 500, e
-        res.end()
-
-      makeRequest app, done
+      request app
+        .get "/"
+        .expect 200
+        .end done
 
   describe "models and collections", ->
 
-    it "should load and instanciate models and collections", (done) ->
+    it "should load and instantiate models and collections", (done) ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-
-      app.get "/", (req, res) ->
-        try
+        .use (req, res) ->
           m = res.locals.model "item"
           m.should.be.an.instanceof fixtures.Item
           c = res.locals.collection "list"
           c.should.be.an.instanceof fixtures.List
-        catch e
-          return res.send 500, e
-        res.end()
+          res.end()
 
-      makeRequest app, done
+      request app
+        .get "/"
+        .expect 200
+        .end done
 
     it "should add named models and collections JSON data to `app_data` object", (done) ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-
-      app.get "/", (req, res) ->
-        try
+        .use (req, res) ->
           m = res.locals.model "item", {id: 1, title: "test"}, "MyItem"
           res.locals.model "item", {} # No name, should not be added
           res.locals.collection "list", [m], "MyList"
@@ -87,39 +77,38 @@ describe "middleware", ->
               id: 1
               title: "test"
             ]
-        catch e
-          return res.send 500, e
-        res.end()
+          res.end()
 
-      makeRequest app, done
+      request app
+        .get "/"
+        .expect 200
+        .end done
 
   describe "views", ->
 
-    it "should load, instanciate and render views", (done) ->
+    it "should load, instantiate and render views", (done) ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-
-      app.get "/", (req, res) ->
-        try
+        .use (req, res) ->
           m = res.locals.model "item",
             title: "test"
           html = res.locals.view "item",
             model: m
-          $(html).find("h3").text().should.equal "test"
-        catch e
-          return res.send 500, e
-        res.end()
+          $ = cheerio.load html
+          $("h3").text().should.equal "test"
+          res.end()
 
-      makeRequest app, done
+      request app
+        .get "/"
+        .expect 200
+        .end done
 
     it "should add views collections to `app_data` object", (done) ->
 
       app = express()
         .use middleware "#{ __dirname }/fixtures"
-
-      app.get "/", (req, res) ->
-        try
+        .use (req, res) ->
           m = res.locals.model "item",
             id: 1
             title: "test"
@@ -130,8 +119,9 @@ describe "middleware", ->
           res.locals.app_data.views[0].should.have.property("data").property("model").eql
             id: 1
             title: "test"
-        catch e
-          return res.send 500, e
-        res.end()
+          res.end()
 
-      makeRequest app, done
+      request app
+        .get "/"
+        .expect 200
+        .end done
